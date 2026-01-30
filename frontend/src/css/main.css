@@ -1,0 +1,80 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css";
+@import "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap";
+
+:root {
+  --bg-color: #0f172a; /* Azul escuro profundo conforme a logo */
+  --card-bg: #1e293b;
+  --primary-accent: #3b82f6;
+  --secondary-accent: #10b981;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: #f1f5f9;
+  font-family: "Inter", sans-serif; /* Fonte moderna */
+  min-height: 100vh;
+}
+
+.hero.is-custom {
+  background: transparent;
+  padding-top: 2rem;
+}
+
+.main-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.box {
+  background-color: var(--card-bg);
+  border: 1px solid #334155;
+  color: #f1f5f9;
+  border-radius: 12px; /* Bordas suaves */
+}
+
+.textarea {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  border: 1px solid #334155;
+  transition: all 0.3s ease;
+}
+
+.textarea:focus {
+  border-color: var(--primary-accent);
+  box-shadow: 0 0 0 0.125em rgba(59, 130, 246, 0.25);
+}
+
+.label {
+  color: #94a3b8;
+}
+
+/* Estilização dos resultados baseada no feedback visual */
+.result-card {
+  display: none;
+  transition: all 0.5s ease;
+}
+
+.badge-produtivo {
+  background-color: #065f46;
+  color: #34d399;
+}
+.badge-improdutivo {
+  background-color: #7f1d1d;
+  color: #f87171;
+}
+
+.loading-overlay {
+  display: none;
+  text-align: center;
+  padding: 2rem;
+}
+
+.copy-btn {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.copy-btn:active {
+  transform: scale(0.9);
+}

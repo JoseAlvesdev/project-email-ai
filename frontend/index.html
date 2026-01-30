@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EmailSmart AI</title>
+    <link rel="stylesheet" href="./src/css/main.css" />
+    <script defer src="./src/js/main.js"></script>
+  </head>
+
+  <body>
+    <header class="hero is-custom">
+      <div class="hero-body has-text-centered">
+        <h1 class="title is-2 has-text-white">
+          <span class="icon-text">
+            <span class="icon has-text-link"><i class="fas fa-brain"></i></span>
+            <span>EmailSmart AI</span>
+          </span>
+        </h1>
+        <p class="subtitle is-6 has-text-grey-light">
+          Classificação inteligente e sugestão de resposta em segundos
+        </p>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <div class="box">
+        <div class="field">
+          <label class="label">Conteúdo do Email</label>
+          <div class="control">
+            <textarea
+              id="emailInput"
+              class="textarea is-medium"
+              rows="8"
+              [cite_start]placeholder="Cole aqui o corpo do email para análise..."
+            ></textarea>
+          </div>
+          <p class="help has-text-right" id="charCounter">
+            0 / 50.000 caracteres
+          </p>
+        </div>
+
+        <div class="field is-grouped is-grouped-centered">
+          <p class="control">
+            <button
+              id="analyzeBtn"
+              class="button is-link is-rounded is-fullwidth px-6"
+              onclick="ProcessEmail()"
+            >
+              <span class="icon"><i class="fas fa-magic"></i></span>
+              <span><strong>Analisar com IA</strong></span>
+            </button>
+          </p>
+          <p class="control">
+            <button
+              class="button is-ghost has-text-grey"
+              onclick="toClean()"
+            >
+              Limpar
+            </button>
+          </p>
+        </div>
+      </div>
+
+      <div id="loading" class="loading-overlay">
+        <button class="button is-loading is-ghost is-large"></button>
+        <p class="has-text-grey-light mt-3">
+          Analisando conteúdo e gerando resposta...
+        </p>
+      </div>
+
+      <div id="resultArea" class="result-card">
+        <div class="columns">
+          <div class="column is-4">
+            <div class="box has-text-centered">
+              <p class="heading has-text-grey-light">
+                Classificação
+              </p>
+              <div id="categoryBadge" class="tag is-large is-rounded my-3">
+                <span id="categoryText">PRODUTIVO</span>
+              </div>
+              <p id="categoryDesc" class="is-size-7 has-text-grey-light"></p>
+            </div>
+          </div>
+
+          <div class="column is-8">
+            <div class="box">
+              <div
+                class="is-flex is-justify-content-space-between is-align-items-center mb-4"
+              >
+                <h3 class="subtitle is-5 has-text-white mb-0">
+                  Sugestão de Resposta
+                </h3>
+                <button
+                  class="button is-small is-dark copy-btn"
+                  onclick="copyText()"
+                >
+                  <span class="icon is-small"><i class="fas fa-copy"></i></span>
+                  <span>Copiar Texto</span>
+                </button>
+              </div>
+
+              <div class="content is-size-6 has-text-grey-lighter">
+                <div id="aiResponse" style="white-space: pre-wrap"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer has-text-centered" style="background: transparent">
+      <p class="has-text-grey-dark is-size-7">
+        EmailSmart AI &copy; 2026 | José Alves
+      </p>
+    </footer>
+  </body>
+</html>

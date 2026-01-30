@@ -1,0 +1,17 @@
+# Ignora todas as pastas __pycache__ em qualquer lugar do projeto
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignora o ambiente virtual
+.venv/
+venv/
+
+# Ignora arquivos de configuração sensíveis
+.env
+
+# Ignora arquivos do SO e editores
+.DS_Store
+.idea/
+.vscode/
