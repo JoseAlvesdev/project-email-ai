@@ -1,0 +1,11 @@
+# Python
+backend/.venv/
+backend/__pycache__/
+backend/*.pyc
+
+# Sensível (Gemini Key)
+backend/.env
+
+# Sistema
+.DS_Store
+Thumbs.db
