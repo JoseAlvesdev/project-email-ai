@@ -9,18 +9,28 @@ emailInput.addEventListener("input", () => {
 
 async function ProcessEmail() {
   const text = emailInput.value.trim();
-  if (!text)
-    return alert("Por favor, insira o texto do email.");
+  if (!text) return alert("Por favor, insira o texto do email.");
 
-  // Feedback visual
-  document.getElementById("analyzeBtn").classList.add("is-loading");
-  document.getElementById("loading").style.display = "block";
-  document.getElementById("resultArea").style.display = "none";
+  const analyzeBtn = document.getElementById("analyzeBtn");
+  const loaderContainer = document.getElementById("loading");
+  const loaderText = document.getElementById("loading-text");
+  const resultArea = document.getElementById("resultArea");
+
+  analyzeBtn.disabled = true;
+  loaderContainer.style.display = "block";
+  resultArea.style.display = "none";
+
+  // Timer para despertar o servidor suspenso
+  const servidorDormindoTimer = setTimeout(() => {
+    loaderText.innerText = "O servidor está suspenso. "
+      + "Despertando servidor para realizar solicitação...\n"
+      + "Isso pode levar até 1 minuto.";
+  }, 20000);
 
   try {
     const API_BASE_URL = window.location.hostname === "127.0.0.1" 
-    ? "http://127.0.0.1:8000" 
-    : "https://project-email-ai-backend.onrender.com";
+      ? "http://127.0.0.1:8000" 
+      : "https://project-email-ai-backend.onrender.com";
 
     const response = await fetch(`${API_BASE_URL}/api/v1/email/`, {
       method: "POST",
@@ -30,17 +40,24 @@ async function ProcessEmail() {
 
     const data = await response.json();
 
+    loaderContainer.style.display = "none";
+    
     displayResult(
       data.category,
       data.category === 'produtivo'
-      ? 'Este email requer ação direta e resposta profissional.' 
-      : 'Este email não requer ação direta ou resposta profissional.',
+        ? 'Este email requer ação direta e resposta profissional.' 
+        : 'Este email é classificado como informativo ou irrelevante.',
       data.suggestion_response
     );
+
   } catch (error) {
-    alert("Erro ao conectar com a IA.");
-    document.getElementById("analyzeBtn").classList.remove("is-loading");
-    document.getElementById("loading").style.display = "none";
+    console.error(error);
+    loaderContainer.style.display = "none";
+    resultArea.style.display = "none";
+    alert("Erro ao conectar com o servidor. Por favor, tente novamente.");
+  } finally {
+    clearTimeout(servidorDormindoTimer);
+    analyzeBtn.disabled = false;
   }
 }
 
