@@ -1,7 +1,7 @@
 const emailInput = document.getElementById("emailInput");
 const charCounter = document.getElementById("charCounter");
 
-// Contador de caracteres em tempo real
+// Contador de caracteres
 emailInput.addEventListener("input", () => {
   const length = emailInput.value.length;
   charCounter.innerText = `${length.toLocaleString()} / 50.000 caracteres`;
@@ -12,7 +12,7 @@ async function ProcessEmail() {
   if (!text)
     return alert("Por favor, insira o texto do email.");
 
-  // Feedback visual inicial
+  // Feedback visual
   document.getElementById("analyzeBtn").classList.add("is-loading");
   document.getElementById("loading").style.display = "block";
   document.getElementById("resultArea").style.display = "none";
@@ -57,7 +57,6 @@ function displayResult(cat, desc, resp) {
   document.getElementById("categoryDesc").innerText = desc;
   document.getElementById("aiResponse").innerText = resp;
 
-  // Cores baseadas na classificação
   if (cat.toLowerCase() === "produtivo") {
     badge.className = "tag is-large is-rounded my-3 badge-produtivo";
   } else {

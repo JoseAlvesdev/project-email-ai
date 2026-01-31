@@ -9,10 +9,10 @@ app.include_router(api_router, prefix='/api/v1')
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Em desenvolvimento, o "*" libera todas as portas
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"], # Libera POST, GET, etc.
-    allow_headers=["*"], # Libera headers como Content-Type
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 if __name__ == '__main__':
