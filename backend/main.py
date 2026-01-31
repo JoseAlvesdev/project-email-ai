@@ -9,7 +9,7 @@ app.include_router(api_router, prefix='/api/v1')
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://project-email-ai-frontend.vercel.app/"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
