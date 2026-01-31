@@ -34,8 +34,24 @@ EmailSmart AI é uma aplicação inteligente para classificação de e-mails e g
 * Crie um arquivo `.env` na raiz da pasta `backend/`.
 * Adicione sua chave: `GEMINI_API_KEY=sua_chave_aqui`.
 
+5. No arquivo `frontend/src/js/main.js` subsitua a url da variável `API_BASE_URL` pela url local da API.
+    ```js
+    const API_BASE_URL = "https://urlLocalDaApi";
+    ```
 
-5. Inicie o servidor:
+6. No arquivo `backend/main.py`no parâmetro `allow_origins=["*"]` que está no bloco de código mostrado abaixo como exemplo, substitua a url da aplicação hospedada na vercel por "*":
+    ```py
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=["*"],
+            allow_credentials=True,
+            allow_methods=["*"],
+            allow_headers=["*"],
+        )
+
+    ```
+
+7. Inicie o servidor:
     ```bash
     python main.py
 
