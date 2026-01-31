@@ -28,9 +28,7 @@ async function ProcessEmail() {
   }, 20000);
 
   try {
-    const API_BASE_URL = window.location.hostname === "127.0.0.1" 
-      ? "http://127.0.0.1:8000" 
-      : "https://project-email-ai-backend.onrender.com";
+    const API_BASE_URL = "https://project-email-ai-backend.onrender.com";
 
     const response = await fetch(`${API_BASE_URL}/api/v1/email/`, {
       method: "POST",
